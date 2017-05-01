@@ -1,7 +1,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 //// A bit of a wrapper around the airplay2 module.
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
-var browser = require('airplay2').createBrowser();
+var browser = require('airplay-js').createBrowser();
 
 
 var that = this;
@@ -30,19 +30,26 @@ exports.stop = function () {
 
   var devices = browser.getDevices();
   devices.forEach(function (element) {
-
-
+    element.stop();
   }, this);
 };
 exports.pause = function () {
   if (config.device) {
     config.device.rate(0);
   }
+  var devices = browser.getDevices();
+  devices.forEach(function (element) {
+    element.rate(0);
+  }, this);
 };
 exports.resume = function () {
   if (config.device) {
     config.device.rate(1);
   }
+  var devices = browser.getDevices();
+  devices.forEach(function (element) {
+    element.rate(1);
+  }, this);
 };
 
 exports.play = function (url, statusCallback) {
@@ -119,11 +126,10 @@ function playback(seconds, statusCallback) {
   if (config.device) {
     config.device.stop();
 
-
     var devices = browser.getDevices();
     devices.forEach(function (element) {
       element.play(config.url, seconds, function (res) {
-
+      debugger
       })
 
     }, this);

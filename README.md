@@ -30,7 +30,15 @@ Voiceplay is comprised of a node-based server that runs on your local network an
 * With npm, install the latest version of voiceplay:
 
 ```
-npm install voiceplay
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.1/install.sh | bash
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
+nvm install v4
+git clone https://github.com/grobbie/voiceplay.git
+cd voiceplay
+npm install
 ```
 
 * Using Finder, Navigate to the folder where the voiceplay module is installed and open voiceplay.js with your editor of choice to specify its start arguments: your YouTube API key and the path to your iTunes directory.

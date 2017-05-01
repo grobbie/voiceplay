@@ -300,7 +300,7 @@ function searchByIntent(playbackIndex, callback) {
     case 'YouTube':
       searchForYouTubeVideos(function (videoId) {
         if (videoId) {
-          context.intent.responseText = 'Playing ' + context.statement + '. ' + context.intent.video.title + ' from YouTube.';
+          context.intent.responseText = 'Playing ' + context.intent.video.title + ' from YouTube.';
         } else {
           context.intent.responseText = 'I couldn\'t find anything like that on youtube.';
         }
